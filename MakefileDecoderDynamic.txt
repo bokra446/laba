@@ -1,8 +1,8 @@
-all: str_modul.a decoder.o
-	gcc decoder.o -o decoder \
-	-L./ -lstr_modul.so -Wl, -rpath,./
-str_modul.a: util.o EncryptFunction.o
-	gcc -shared -o str_modul.so util.o EncryptFunction.o
+all: modul_str.so decoder.o
+	gcc decoder.o -o decoder -L. -lmodul_str
+	rm decoder.o
+modul_str.so: util.o EncryptFunction.o
+	gcc -shared -o libmodul_str.so util.o EncryptFunction.o
 	rm util.o
 	rm EncryptFunction.o
 util.o:
@@ -11,3 +11,6 @@ decoder.o:
 	gcc -c decoder.c -o decoder.o -std=c99
 EncryptFunction.o:
 	gcc -c -fPIC EncryptFunction.c -o EncryptFunction.o -std=c99
+clean:
+	rm libmodul_str.so
+	rm decoder

@@ -1,12 +1,22 @@
-all: str_modul.a decoder.o
-	gcc -o decoder decoder.o -std=c99 -L./ -lstr_modul.a
-str_modul.a: util.o EncryptFunction.o
-	ar r str_modul.a util.o EncryptFunction.o
+all: libstr_modul.a decoder.o  
+	gcc -o decoder decoder.o -std=c99 -L. -lstr_modul
+	rm decoder.o
+
+libstr_modul.a: util.o EncryptFunction.o  
+	ar r libstr_modul.a util.o EncryptFunction.o
+	ranlib libstr_modul.a
 	rm util.o
 	rm EncryptFunction.o
-util.o:
+
+util.o: 
 	gcc -c util.c -o util.o
+
 decoder.o:
 	gcc -c decoder.c -o decoder.o -std=c99
+
 EncryptFunction.o:
 	gcc -c EncryptFunction.c -o EncryptFunction.o -std=c99
+
+clean:
+	rm decoder
+	rm libstr_modul.a

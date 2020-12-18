@@ -11,15 +11,15 @@ char* immutableToLower(const char* str);
 
 void mutableDeleteSpaces(char* str);
 
-char* imutableDeleteSpaces(const char* str);
+char* immutableDeleteSpaces(const char* str);
 
-void mutablestrip(char* str);
+void mutableStrip(char* str);
 
-char* imutablestrip(const char* str);
+char* immutableStrip(const char* str);
 
 void mutablegetfilterStr (char* str);
 
-char* imutablegetfilterStr (const char* str);
+char* immutablegetfilterStr (const char* str);
 
 unsigned int checkStrtoNumber (char* str);
 

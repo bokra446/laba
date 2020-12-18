@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "util.h"
 
 void mutableToUpper(char* str) {
 	unsigned int i;
@@ -47,7 +48,7 @@ char* immutableToLower(const char* str) {
 			Lowstr[i] = str[i] + BigLittleDiference;
 		}
 	}
-	return q;
+	return Lowstr;
 }
 
 void mutableDeleteSpaces(char* str) {
@@ -77,7 +78,7 @@ char* immutableDeleteSpaces(const char* str) {
 }
 
 void mutableStrip(char* str) {
-	unsigned int i, j, rightborder;
+	unsigned int i, j, rightborder = strlen(str);
 	const char Space = ' ', Endstr = '\0';
 	const unsigned int length = strlen(str);
     i = length - 1;
@@ -85,9 +86,10 @@ void mutableStrip(char* str) {
 		rightborder = i;	
 		i = i - 1;
 	}
+  char firstspace = 0;
 	for (i = j = 0; i < rightborder; i++) {
-		if ((str[i] == Space) && (j == 0)) {
-			continue;
+		if ((str[i] == Space) && (firstspace == 0)) {
+      ++firstspace;
 		}
 		else {
 			str[j++] = str[i];
@@ -98,7 +100,7 @@ void mutableStrip(char* str) {
 
 char* immutableStrip(const char* str) {
 	char* stripstr = (char*)malloc(strlen(str) * sizeof(char));
-	unsigned int i, j, rightborder;
+	unsigned int i, j, rightborder = strlen(str);
 	const char Space = ' ', Endstr = '\0';
 	const unsigned int length = strlen(str);
     i = length - 1;
@@ -106,19 +108,18 @@ char* immutableStrip(const char* str) {
 		rightborder = i;	
 		i = i - 1;
 	}
+  char firstspace = 0;
 	for (i = j = 0; i < rightborder; i++) {
-		if ((str[i] == Space) && (j == 0)) {
-			continue;
+		if ((str[i] == Space) && (firstspace == 0)) {
+      ++firstspace;
 		}
 		else {
 			stripstr[j++] = str[i];
 		}
 	}
 	stripstr[j] = Endstr;
-	return stripstr;
+  return stripstr;
 }
-
-
 
 void mutableGetFilterStr (char* str) {
 	unsigned int j, i;
@@ -137,7 +138,7 @@ char* immutableGetFilterStr (const char* str) {
 	unsigned int j, i;
 	const unsigned int length = strlen(str);
 	for (i = j = 0; i < length; i++) {
-		if (((str[i]> = 'a') && (str[i] <= 'z')) 
+		if (((str[i] >= 'a') && (str[i] <= 'z')) 
 			|| ((str[i] >= '0') && (str[i] <= '9')) 
 			|| (str[i] == ' ') || ((str[i] >= 'A') && (str[i] <= 'Z'))) {
 			filterstr[j++] = str[i];
