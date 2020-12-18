@@ -15,6 +15,9 @@ int main() {
     if (!strcmp(allowedFlags[0], flag)) {
         printf("Шифруемая строка: ");
         scanf(" %99[^\n]", str);
+		if (!checkStrtoLetters (str)) {
+			return 0;
+		}
         mutableStrip(str);
         mutableToLower(str);
         printf("Ключ: ");
@@ -24,6 +27,9 @@ int main() {
     else if (!strcmp(allowedFlags[1], flag)) {
         printf("Шифруемая строка: ");
         scanf(" %99[^\n]", str);
+		if (!checkStrtoLetters (str)) {
+			return 0;
+		}
         mutableStrip(str);
         mutableToLower(str);
         printf("Сдвиг: ");

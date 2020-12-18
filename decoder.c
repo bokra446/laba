@@ -10,11 +10,14 @@ int main() {
     char flag[7];
     char str[80], key[80];
     int shift;
-    printf("Выберите способ исходный шифрования (xor или caesar)\n");
+    printf("Выберите исходный способ шифрования (xor или caesar)\n");
     scanf("%s", flag);
     if (!strcmp(allowedFlags[0], flag)) {
         printf("Дешифруемая строка: ");
         scanf(" %99[^\n]", str);
+		if (!checkStrtoLetters (str)) {
+			return 0;
+		}
         mutableStrip(str);
         mutableToLower(str);
         printf("Ключ: ");
@@ -24,6 +27,9 @@ int main() {
     else if (!strcmp(allowedFlags[1], flag)) {
         printf("Дешифруемая строка: ");
         scanf(" %99[^\n]", str);
+		if (!checkStrtoLetters (str)) {
+			return 0;
+		}
         mutableStrip(str);
         mutableToLower(str);
         printf("Сдвиг (изначальное положительное число): ");

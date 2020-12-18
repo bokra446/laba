@@ -6,10 +6,10 @@ void mutableDecoderCaesar(char* str, int shift) {
 	unsigned int i;
 	const unsigned int length = strlen(str);
 	const char difference = 'z' - 'a' + 1;
-  const int ShifModDif = shift % difference;
-  if (shift) {
-    shift = shift + difference * ((shift / difference) + 1);
-  }
+	const int ShifModDif = shift % difference;
+	if (shift) {
+		shift = shift + difference * ((shift / difference) + 1);
+	}
 	for (i = 0; i < length; i++) {
 		if ((ShifModDif > 'z' - str[i])) {
             str[i] = str[i] + (ShifModDif) - difference;
@@ -25,10 +25,10 @@ char* immutableDecoderCaesar(const char* str, int shift) {
 	unsigned int i;
 	const unsigned int length = strlen(str);
 	const char difference = 'z' - 'a' + 1;
-  const int ShifModDif = shift % difference;
-  if (shift) {
-    shift = shift + difference * ((shift / difference) + 1);
-  }
+	const int ShifModDif = shift % difference;
+	if (shift) {
+		shift = shift + difference * ((shift / difference) + 1);
+	}
 	for (i = 0; i < length; i++) {
 		if ((ShifModDif > 'z' - str[i])) {
             decstr[i] = str[i] + (ShifModDif) - difference;

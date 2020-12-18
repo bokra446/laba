@@ -86,10 +86,10 @@ void mutableStrip(char* str) {
 		rightborder = i;	
 		i = i - 1;
 	}
-  char firstspace = 0;
+	char firstspace = 0;
 	for (i = j = 0; i < rightborder; i++) {
 		if ((str[i] == Space) && (firstspace == 0)) {
-      ++firstspace;
+			++firstspace;
 		}
 		else {
 			str[j++] = str[i];
@@ -108,17 +108,17 @@ char* immutableStrip(const char* str) {
 		rightborder = i;	
 		i = i - 1;
 	}
-  char firstspace = 0;
+	char firstspace = 0;
 	for (i = j = 0; i < rightborder; i++) {
 		if ((str[i] == Space) && (firstspace == 0)) {
-      ++firstspace;
+		++firstspace;
 		}
 		else {
 			stripstr[j++] = str[i];
 		}
 	}
 	stripstr[j] = Endstr;
-  return stripstr;
+	return stripstr;
 }
 
 void mutableGetFilterStr (char* str) {
