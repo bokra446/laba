@@ -4,23 +4,23 @@
 
 void mutableToUpper(char* str) {
 	unsigned int i;
-	const char LittleBigDif = 'A' - 'a', LittleA = 'a';
+	const char LittleBigDiference = 'A' - 'a', LittleA = 'a';
 	const unsigned int length = strlen(str);
 	for (i = 0; i < length; i++) {
 		if (str[i] >= LittleA) {
-			str[i] = str[i] + LittleBigDif;
+			str[i] = str[i] + LittleBigDiference;
 		}
 	}
 }
 
 char* immutableToUpper (const char* str) { 
 	char* Upstr = (char*)malloc(strlen(str) * sizeof(char));
-	const char LittleBigDif = 'A'-'a', LittleA = 'a';
+	const char LittleBigDiference = 'A'-'a', LittleA = 'a';
 	const unsigned int length = strlen(str);
 	unsigned int i;
 	for (i = 0; i < length; i++) {
 		if (str[i] >= LittleA) {
-			Upstr[i] = str[i] + LittleBigDif;
+			Upstr[i] = str[i] + LittleBigDiference;
 		}
 	}
 	return Upstr;
@@ -28,11 +28,11 @@ char* immutableToUpper (const char* str) {
 
 void mutableToLower(char* str) {
 	unsigned int i;
-	const char BigLittleDif = 'a' - 'A', BigA = 'A', BigZ = 'Z';
+	const char BigLittleDiference = 'a' - 'A', BigA = 'A', BigZ = 'Z';
 	const unsigned int length = strlen(str);
 	for (i = 0; i < length; i++) {
 		if ((str[i] >= BigA) && (str[i] <= BigZ)) {
-			str[i] = str[i] + BigLittleDif;
+			str[i] = str[i] + BigLittleDiference;
 		}
 	}
 }
@@ -41,10 +41,10 @@ char* immutableToLower(const char* str) {
 	char* Lowstr = (char*)malloc(strlen(str) * sizeof(char));
 	unsigned int i;
 	const unsigned int length = strlen(str);
-	const char BigLittleDif = 'a' - 'A', BigA = 'A', BigZ = 'Z';
+	const char BigLittleDiference = 'a' - 'A', BigA = 'A', BigZ = 'Z';
 	for (i = 0; i < length; i++) {
 		if ((str[i] >= BigA) && (str[i] <= BigZ)) {
-			Lowstr[i] = str[i] + BigLittleDif;
+			Lowstr[i] = str[i] + BigLittleDiference;
 		}
 	}
 	return q;
@@ -62,7 +62,7 @@ void mutableDeleteSpaces(char* str) {
 	str[j] = Endstr;
 }
 
-char* imutableDeleteSpaces(const char* str) {
+char* immutableDeleteSpaces(const char* str) {
 	char* SpacelessStr = (char*)malloc(strlen(str) * sizeof(char));
 	unsigned int i, j;
 	const char Space = ' ', Endstr = '\0';
@@ -76,7 +76,7 @@ char* imutableDeleteSpaces(const char* str) {
 	return SpacelessStr;
 }
 
-void mutablestrip(char* str) {
+void mutableStrip(char* str) {
 	unsigned int i, j, rightborder;
 	const char Space = ' ', Endstr = '\0';
 	const unsigned int length = strlen(str);
@@ -96,7 +96,7 @@ void mutablestrip(char* str) {
 	str[j] = Endstr;
 }
 
-char* imutablestrip(const char* str) {
+char* immutableStrip(const char* str) {
 	char* stripstr = (char*)malloc(strlen(str) * sizeof(char));
 	unsigned int i, j, rightborder;
 	const char Space = ' ', Endstr = '\0';
@@ -120,7 +120,7 @@ char* imutablestrip(const char* str) {
 
 
 
-void mutablegetfilterStr (char* str) {
+void mutableGetFilterStr (char* str) {
 	unsigned int j, i;
 	const unsigned int length = strlen(str);
 	for (i = j = 0; i < length; i++) {
@@ -132,7 +132,7 @@ void mutablegetfilterStr (char* str) {
 	}
 }
 
-char* imutablegetfilterStr (const char* str) {
+char* immutableGetFilterStr (const char* str) {
 	char* filterstr = (char*)malloc(strlen(str) * sizeof(char));
 	unsigned int j, i;
 	const unsigned int length = strlen(str);

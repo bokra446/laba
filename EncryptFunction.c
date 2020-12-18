@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void mutabledecoderCaesar(char* str, unsigned int shift) {
+void mutableDecoderCaesar(char* str, unsigned int shift) {
 	unsigned int i;
 	const unsigned int length = strlen(str);
 	const char difference = 'z' - 'a' + 1;
@@ -16,7 +16,7 @@ void mutabledecoderCaesar(char* str, unsigned int shift) {
 	}
 }
 
-char* immutabledecoderCaesar(const char* str, unsigned int shift) {
+char* immutableDecoderCaesar(const char* str, unsigned int shift) {
 	char* decstr = (char*)malloc(strlen(str) * sizeof(char));
 	unsigned int i;
 	const unsigned int length = strlen(str);
@@ -33,7 +33,7 @@ char* immutabledecoderCaesar(const char* str, unsigned int shift) {
 	return decstr;
 }
 
-void mutabledecoderXor(char* str, const char* password) {
+void mutableDecoderXor(char* str, const char* password) {
 	unsigned int i, j = 0;
 	const unsigned int lengthstr = strlen(str), lengthpass = strlen(password);
 	for (i = 0; i < lengthstr; i++) {
@@ -45,7 +45,7 @@ void mutabledecoderXor(char* str, const char* password) {
 	}
 }
 
-char* immutabledecoderXor(const char* str, const char* password) {
+char* immutableDecoderXor(const char* str, const char* password) {
 	char* xorstr = (char*)malloc(strlen(str) * sizeof(char));
 	unsigned int i, j = 0;
   	const unsigned int lengthstr = strlen(str), lengthpass = strlen(password);
