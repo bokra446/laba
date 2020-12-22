@@ -11,11 +11,13 @@ void mutableDecoderCaesar(char* str, int shift) {
 		shift = shift + difference * ((shift / difference) + 1);
 	}
 	for (i = 0; i < length; i++) {
-		if ((ShifModDif > 'z' - str[i])) {
-            str[i] = str[i] + (ShifModDif) - difference;
-		}
-		else {
-            str[i] = str[i] + (ShifModDif);
+		if ((str[i] <= 'z') && (str[i] >= 'a')) {
+			if ((ShifModDif > 'z' - str[i])) {
+				str[i] = str[i] + (ShifModDif) - difference;
+			}
+			else {
+				str[i] = str[i] + (ShifModDif);
+			}
 		}
 	}
 }
@@ -30,11 +32,13 @@ char* immutableDecoderCaesar(const char* str, int shift) {
 		shift = shift + difference * ((shift / difference) + 1);
 	}
 	for (i = 0; i < length; i++) {
-		if ((ShifModDif > 'z' - str[i])) {
-            decstr[i] = str[i] + (ShifModDif) - difference;
-		}
-		else {
-            decstr[i] = str[i] + (ShifModDif);
+		if ((str[i] >= 'a') && (str[i] <= 'z')) {
+			if ((ShifModDif > 'z' - str[i])) {
+				decstr[i] = str[i] + (ShifModDif) - difference;
+			}
+			else {
+				decstr[i] = str[i] + (ShifModDif);
+			}
 		}
 	}
 	decstr[i] = '\0';

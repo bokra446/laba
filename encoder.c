@@ -5,11 +5,22 @@
 #include "util.h"
 #include "EncryptFunction.h"
 
-int main() {
+int main (const int argc, char* argv[]) {
+    const char* ConsoleAllowedFlags[]={"--xor", "--caesar"};
     const char* allowedFlags[] = {"xor", "caesar"};
     char flag[7];
     char str[80], key[80];
     unsigned int shift;
+    if (argc == 4) {
+	    if (strcmp(argv[1],ConsoleAllowedFlags[0]) == 0){
+		    mutableDecoderXor(argv[2], argv[3]);
+	    }
+	    else if (strcmp(argv[1],ConsoleAllowedFlags[1]) == 0) {
+		    mutableDecoderCaesar(argv[2], atoi(argv[3]));
+	    }
+      printf("%s\n", argv[2]);
+    }
+	  else if (argc == 1) {
     printf("Выберите способ шифрования (xor или caesar)\n");
     scanf("%s", flag);
     if (!strcmp(allowedFlags[0], flag)) {
@@ -37,9 +48,13 @@ int main() {
         mutableDecoderCaesar(str, shift);
     }
     else {
-        printf("Неккоректные данные ");
+        printf("Неккоректные данные \n");
         return 1;
     }
     puts(str);
+    }
+    else{
+      printf("Неккоректные данные\n");
+    }
     return 0;
 }
