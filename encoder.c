@@ -18,7 +18,11 @@ int main (const int argc, char* argv[]) {
 	    else if (strcmp(argv[1], ConsoleAllowedFlags[1]) == 0) {
 		    mutableDecoderCaesar(argv[2], atoi(argv[3]));
 	    }
-		printf("%s\n", argv[2]);
+      else {
+        printf("Неккорекные данные\n");
+        return 0;
+      }
+      printf("%s\n", argv[2]);
     }
 	else if (argc == 1) {
 		printf("Выберите способ шифрования (xor или caesar)\n");
@@ -26,9 +30,6 @@ int main (const int argc, char* argv[]) {
 		if (!strcmp(allowedFlags[0], flag)) {
 			printf("Шифруемая строка: ");
 			scanf(" %99[^\n]", str);
-			if (!checkStrtoLetters (str)) {
-				return 0;
-			}
 			mutableStrip(str);
 			mutableToLower(str);
 			printf("Ключ: ");
@@ -38,9 +39,6 @@ int main (const int argc, char* argv[]) {
 		else if (!strcmp(allowedFlags[1], flag)) {
 			printf("Шифруемая строка: ");
 			scanf(" %99[^\n]", str);
-			if (!checkStrtoLetters (str)) {
-				return 0;
-			}
 			mutableStrip(str);
 			mutableToLower(str);
 			printf("Сдвиг: ");

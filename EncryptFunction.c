@@ -6,17 +6,17 @@ void mutableDecoderCaesar(char* str, int shift) {
 	unsigned int i;
 	const unsigned int length = strlen(str);
 	const char difference = 'z' - 'a' + 1;
-	const int ShifModDif = shift % difference;
 	if (shift) {
-		shift = shift + difference * ((shift / difference) + 1);
+		shift = shift + difference * (abs((shift / difference)) + 1);
 	}
+	const int ShiftModDif = shift % difference;
 	for (i = 0; i < length; i++) {
 		if ((str[i] <= 'z') && (str[i] >= 'a')) {
-			if ((ShifModDif > 'z' - str[i])) {
-				str[i] = str[i] + (ShifModDif) - difference;
+			if ((ShiftModDif > 'z' - str[i])) {
+				str[i] = str[i] + (ShiftModDif) - difference;
 			}
 			else {
-				str[i] = str[i] + (ShifModDif);
+				str[i] = str[i] + (ShiftModDif);
 			}
 		}
 	}
@@ -24,24 +24,8 @@ void mutableDecoderCaesar(char* str, int shift) {
 
 char* immutableDecoderCaesar(const char* str, int shift) {
 	char* decstr = (char*)malloc(strlen(str) * sizeof(char));
-	unsigned int i;
-	const unsigned int length = strlen(str);
-	const char difference = 'z' - 'a' + 1;
-	const int ShifModDif = shift % difference;
-	if (shift) {
-		shift = shift + difference * ((shift / difference) + 1);
-	}
-	for (i = 0; i < length; i++) {
-		if ((str[i] >= 'a') && (str[i] <= 'z')) {
-			if ((ShifModDif > 'z' - str[i])) {
-				decstr[i] = str[i] + (ShifModDif) - difference;
-			}
-			else {
-				decstr[i] = str[i] + (ShifModDif);
-			}
-		}
-	}
-	decstr[i] = '\0';
+	strcpy(decstr, str);
+  mutableDecoderCaesar(decstr, shift);
 	return decstr;
 }
 
@@ -59,15 +43,7 @@ void mutableDecoderXor(char* str, const char* password) {
 
 char* immutableDecoderXor(const char* str, const char* password) {
 	char* xorstr = (char*)malloc(strlen(str) * sizeof(char));
-	unsigned int i, j = 0;
-  	const unsigned int lengthstr = strlen(str), lengthpass = strlen(password);
-	for (i = 0; i < lengthstr; i++) {
-		xorstr[i] = str[i] ^ password[j];
-		++j;
-		if (j > lengthpass - 1) {
-			j = 0;
-		}
-	}
-	xorstr[i] = '\0';
+	strcpy(xorstr, str);
+  mutableDecoderXor(xorstr, password);
 	return xorstr;
 }

@@ -16,14 +16,8 @@ void mutableToUpper(char* str) {
 
 char* immutableToUpper (const char* str) { 
 	char* Upstr = (char*)malloc(strlen(str) * sizeof(char));
-	const char LittleBigDiference = 'A'-'a', LittleA = 'a';
-	const unsigned int length = strlen(str);
-	unsigned int i;
-	for (i = 0; i < length; i++) {
-		if (str[i] >= LittleA) {
-			Upstr[i] = str[i] + LittleBigDiference;
-		}
-	}
+  strcpy(Upstr, str);
+	mutableToUpper(Upstr);
 	return Upstr;
 }
 
@@ -40,14 +34,9 @@ void mutableToLower(char* str) {
 
 char* immutableToLower(const char* str) {
 	char* Lowstr = (char*)malloc(strlen(str) * sizeof(char));
-	unsigned int i;
-	const unsigned int length = strlen(str);
-	const char BigLittleDiference = 'a' - 'A', BigA = 'A', BigZ = 'Z';
-	for (i = 0; i < length; i++) {
-		if ((str[i] >= BigA) && (str[i] <= BigZ)) {
-			Lowstr[i] = str[i] + BigLittleDiference;
-		}
-	}
+	strcpy(Lowstr, str);
+	mutableToLower(Lowstr);
+	return Lowstr;
 	return Lowstr;
 }
 
@@ -65,15 +54,8 @@ void mutableDeleteSpaces(char* str) {
 
 char* immutableDeleteSpaces(const char* str) {
 	char* SpacelessStr = (char*)malloc(strlen(str) * sizeof(char));
-	unsigned int i, j;
-	const char Space = ' ', Endstr = '\0';
-	const unsigned int length = strlen(str);
-	for (i = j = 0; i < length; i++) {
-		if (str[i] != Space) {
-			SpacelessStr[j++] = str[i];
-		}
-	}
-	SpacelessStr[j] = Endstr;
+	strcpy(SpacelessStr, str);
+  mutableDeleteSpaces(SpacelessStr);
 	return SpacelessStr;
 }
 
@@ -88,6 +70,9 @@ void mutableStrip(char* str) {
 	}
 	char firstspace = 0;
 	for (i = j = 0; i < rightborder; i++) {
+    if ((str[i] != ' ') && (firstspace == 0)){
+      ++firstspace;
+    }
 		if ((str[i] == Space) && (firstspace == 0)) {
 			++firstspace;
 		}
@@ -100,24 +85,8 @@ void mutableStrip(char* str) {
 
 char* immutableStrip(const char* str) {
 	char* stripstr = (char*)malloc(strlen(str) * sizeof(char));
-	unsigned int i, j, rightborder = strlen(str);
-	const char Space = ' ', Endstr = '\0';
-	const unsigned int length = strlen(str);
-    i = length - 1;
-	while (str[i] == ' ') {
-		rightborder = i;	
-		i = i - 1;
-	}
-	char firstspace = 0;
-	for (i = j = 0; i < rightborder; i++) {
-		if ((str[i] == Space) && (firstspace == 0)) {
-		++firstspace;
-		}
-		else {
-			stripstr[j++] = str[i];
-		}
-	}
-	stripstr[j] = Endstr;
+	strcpy(stripstr, str);
+  mutableStrip(stripstr);
 	return stripstr;
 }
 
@@ -135,16 +104,8 @@ void mutableGetFilterStr (char* str) {
 
 char* immutableGetFilterStr (const char* str) {
 	char* filterstr = (char*)malloc(strlen(str) * sizeof(char));
-	unsigned int j, i;
-	const unsigned int length = strlen(str);
-	for (i = j = 0; i < length; i++) {
-		if (((str[i] >= 'a') && (str[i] <= 'z')) 
-			|| ((str[i] >= '0') && (str[i] <= '9')) 
-			|| (str[i] == ' ') || ((str[i] >= 'A') && (str[i] <= 'Z'))) {
-			filterstr[j++] = str[i];
-		}
-	}
-	filterstr[j] = '\0';
+	strcpy(filterstr, str);
+  mutableGetFilterStr(filterstr);
 	return filterstr;
 }
 
