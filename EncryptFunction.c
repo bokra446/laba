@@ -25,7 +25,7 @@ void mutableDecoderCaesar(char* str, int shift) {
 char* immutableDecoderCaesar(const char* str, int shift) {
 	char* decstr = (char*)malloc(strlen(str) * sizeof(char));
 	strcpy(decstr, str);
-  mutableDecoderCaesar(decstr, shift);
+	mutableDecoderCaesar(decstr, shift);
 	return decstr;
 }
 
@@ -44,6 +44,6 @@ void mutableDecoderXor(char* str, const char* password) {
 char* immutableDecoderXor(const char* str, const char* password) {
 	char* xorstr = (char*)malloc(strlen(str) * sizeof(char));
 	strcpy(xorstr, str);
-  mutableDecoderXor(xorstr, password);
+	mutableDecoderXor(xorstr, password);
 	return xorstr;
 }

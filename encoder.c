@@ -18,11 +18,11 @@ int main (const int argc, char* argv[]) {
 	    else if (strcmp(argv[1], ConsoleAllowedFlags[1]) == 0) {
 		    mutableDecoderCaesar(argv[2], atoi(argv[3]));
 	    }
-      else {
-        printf("Неккорекные данные\n");
-        return 0;
-      }
-      printf("%s\n", argv[2]);
+		else {
+			printf("Неккорекные данные\n");
+			return 0;
+		}
+		printf("%s\n", argv[2]);
     }
 	else if (argc == 1) {
 		printf("Выберите способ шифрования (xor или caesar)\n");

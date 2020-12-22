@@ -16,7 +16,7 @@ void mutableToUpper(char* str) {
 
 char* immutableToUpper (const char* str) { 
 	char* Upstr = (char*)malloc(strlen(str) * sizeof(char));
-  strcpy(Upstr, str);
+	strcpy(Upstr, str);
 	mutableToUpper(Upstr);
 	return Upstr;
 }
@@ -37,7 +37,6 @@ char* immutableToLower(const char* str) {
 	strcpy(Lowstr, str);
 	mutableToLower(Lowstr);
 	return Lowstr;
-	return Lowstr;
 }
 
 void mutableDeleteSpaces(char* str) {
@@ -55,7 +54,7 @@ void mutableDeleteSpaces(char* str) {
 char* immutableDeleteSpaces(const char* str) {
 	char* SpacelessStr = (char*)malloc(strlen(str) * sizeof(char));
 	strcpy(SpacelessStr, str);
-  mutableDeleteSpaces(SpacelessStr);
+	mutableDeleteSpaces(SpacelessStr);
 	return SpacelessStr;
 }
 
@@ -70,9 +69,9 @@ void mutableStrip(char* str) {
 	}
 	char firstspace = 0;
 	for (i = j = 0; i < rightborder; i++) {
-    if ((str[i] != ' ') && (firstspace == 0)){
-      ++firstspace;
-    }
+		if ((str[i] != ' ') && (firstspace == 0)){
+			++firstspace;
+		}
 		if ((str[i] == Space) && (firstspace == 0)) {
 			++firstspace;
 		}
@@ -86,7 +85,7 @@ void mutableStrip(char* str) {
 char* immutableStrip(const char* str) {
 	char* stripstr = (char*)malloc(strlen(str) * sizeof(char));
 	strcpy(stripstr, str);
-  mutableStrip(stripstr);
+	mutableStrip(stripstr);
 	return stripstr;
 }
 
@@ -105,7 +104,7 @@ void mutableGetFilterStr (char* str) {
 char* immutableGetFilterStr (const char* str) {
 	char* filterstr = (char*)malloc(strlen(str) * sizeof(char));
 	strcpy(filterstr, str);
-  mutableGetFilterStr(filterstr);
+	mutableGetFilterStr(filterstr);
 	return filterstr;
 }
 

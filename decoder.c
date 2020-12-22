@@ -13,16 +13,16 @@ int main (const int argc, char* argv[]) {
     int shift;
     if (argc == 4) {
 	    if (strcmp(argv[1],ConsoleAllowedFlags[0]) == 0) {
-		    mutableDecoderXor(argv[2], argv[3]);
+			mutableDecoderXor(argv[2], argv[3]);
 	    }
 	    else if (strcmp(argv[1],ConsoleAllowedFlags[1]) == 0) {
 			mutableDecoderCaesar(argv[2], atoi(argv[3]) * (-1));
 	    }
-      else {
-        printf("Неккорекные данные\n");
-        return 0;
-      }
-      printf("%s\n", argv[2]);
+		else {
+			printf("Неккорекные данные\n");
+			return 0;
+		}
+		printf("%s\n", argv[2]);
     }
 	else if (argc == 1) {
 		printf("Выберите исходный способ шифрования (xor или caesar)\n");
